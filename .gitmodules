@@ -1,0 +1,3 @@
+[submodule ".zsh_files"]
+	path = .zsh_files
+	url = https://github.com/Fuzen-py/ZSHFiles
