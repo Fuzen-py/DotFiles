@@ -20,7 +20,7 @@ rec {
     };
     ".profile" = {
       text = ''
-        . /home/aizuzu/.nix-profile/etc/profile.d/nix.sh
+        . "$HOME/.nix-profile/etc/profile.d/nix.sh"
       '';
     };
     ".config/nvim/autoload/.keep".text = "";
