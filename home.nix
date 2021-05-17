@@ -1,4 +1,4 @@
-{ stdenv, config, pkgs, ... }:
+{ lib, stdenv, config, pkgs, ... }:
 
 rec {
   # Let Home Manager install and manage itself.
@@ -46,6 +46,8 @@ rec {
     tealdeer
     procs
     rustup
+    peco
+    kopia
   ];
 
   home.sessionVariables = {
@@ -287,15 +289,62 @@ rec {
     fish = {
       enable = true;
       shellAliases = (import ./shellAliases.nix { inherit pkgs; }) // { };
-      plugins = [{
-        name = "replay.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "orgebucaran/";
-          repo = "replay.fish";
-          rev = "07f2bcea94391946cab747199dd5597366532dda";
-          sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
-        };
-      }];
+      plugins = [
+        {
+          name = "replay.fish";
+          src = pkgs.fetchFromGitHub {
+            owner = "orgebucaran/";
+            repo = "replay.fish";
+            rev = "07f2bcea94391946cab747199dd5597366532dda";
+            sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
+          };
+        }
+        {
+          name = "rustup";
+          src = pkgs.fetchFromGitHub {
+            owner = "oh-my-fish";
+            repo = "plugin-rustup";
+            rev = "81a58a1c433e6aa89d66211c07e7652407fde1ad";
+            sha256 = "mu3lSppyOULU96lRyKlWq84yksAPEi4W/mxUlEpye5c=";
+          };
+        }
+        {
+          name = "expand";
+          src = pkgs.fetchFromGitHub {
+            owner = "oh-my-fish";
+            repo = "plugin-expand";
+            rev = "ffb18d57506c7332ae8b7b8bc8d7f56e3a2390d2";
+            sha256 = "mEgoKxoe7/88p0/5vcX27VM83wp4Cii5C3sTjwnoLJ8=";
+          };
+        }
+        {
+          name = "foriegn-env";
+          src = pkgs.fetchFromGitHub {
+            owner = "oh-my-fish";
+            repo = "plugin-foreign-env";
+            rev = "dddd9213272a0ab848d474d0cbde12ad034e65bc";
+            sha256 = "er1KI2xSUtTlQd9jZl1AjqeArrfBxrgBLcw5OqinuAM=";
+          };
+        }
+        {
+          name = "bang-bang";
+          src = pkgs.fetchFromGitHub {
+            owner = "oh-my-fish";
+            repo = "plugin-bang-bang";
+            rev = "f969c618301163273d0a03d002614d9a81952c1e";
+            sha256 = "A8ydBX4LORk+nutjHurqNNWFmW6LIiBPQcxS3x4nbeQ=";
+          };
+        }
+        {
+          name = "grc";
+          src = pkgs.fetchFromGitHub {
+            owner = "oh-my-fish";
+            repo = "plugin-grc";
+            rev = "a5472aca6f26ca793ee76d7451dae553875a1f1d";
+            sha256 = "w8/ByVdgkXVax2Du6TGvf/VnIu0Min2zQbMaQmsZwSQ=";
+          };
+        }
+      ];
     };
     ssh = {
       enable = true;
