@@ -50,7 +50,7 @@ rec {
     rust-analyzer
     cargo
     rustfmt
-    rust
+    # rust
     peco
     kopia
   ];
