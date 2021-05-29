@@ -45,7 +45,12 @@ rec {
     youtube-dl
     tealdeer
     procs
-    rustup
+    #rustup
+    rustc
+    rust-analyzer
+    cargo
+    rustfmt
+    rust
     peco
     kopia
   ];
@@ -53,6 +58,9 @@ rec {
   home.sessionVariables = {
     EDITOR = "${pkgs.neovim}/bin/nvim";
     DOTNET_ROOT = "${pkgs.dotnet-sdk}";
+    DOTNET_CLI_TELEMETRY_OPTOUT = 1;
+    DOTNET_SKIP_FIRST_TIME_EXPERIENCE = 1;
+    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   };
 
   home.sessionPath = [ "~/.local/bin" "${pkgs.dotnet-sdk}/bin" ];
@@ -127,6 +135,10 @@ rec {
     bat = {
       enable = true;
       config = { theme = "TwoDark"; };
+    };
+
+    nix-index = {
+      enable = true;
     };
 
     irssi = {
@@ -224,7 +236,7 @@ rec {
         username.show_always = true;
       };
     };
-    command-not-found.enable = true;
+    command-not-found.enable = false;
     htop.enable = true;
     man = {
       enable = true;
