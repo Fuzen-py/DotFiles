@@ -63,6 +63,10 @@ rec {
     RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   };
 
+  home.sessionVariablesExtra = ''
+    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+  '';
+
   home.sessionPath = [ "~/.local/bin" "${pkgs.dotnet-sdk}/bin" ];
 
   programs = {
@@ -137,9 +141,7 @@ rec {
       config = { theme = "TwoDark"; };
     };
 
-    nix-index = {
-      enable = true;
-    };
+    nix-index = { enable = true; };
 
     irssi = {
       enable = true;
