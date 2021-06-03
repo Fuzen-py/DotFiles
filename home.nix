@@ -1,4 +1,7 @@
-{ lib, stdenv, config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
+let
+  inherit (pkgs) stdenv;
+in
 
 rec {
   # Let Home Manager install and manage itself.
@@ -45,6 +48,7 @@ rec {
     tig
     restic
     zstd
+    mosh
     rclone
     carnix
     man-pages
@@ -80,6 +84,11 @@ rec {
   home.sessionPath = [ "~/.local/bin" "${pkgs.dotnet-sdk}/bin" ];
 
   programs = {
+    vscode = {
+      enable = true;
+      package = pkgs.vscode;
+
+    };
     firefox = {
       enable = true;
       package = pkgs.firefox.override {
