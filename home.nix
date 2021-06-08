@@ -93,10 +93,12 @@ in rec {
     })
     openssh
     nodejs
+    lynx
   ];
 
   home.sessionVariables = {
     EDITOR = "${pkgs.neovim}/bin/nvim";
+    BROWSER = "${pkgs.lynx}/bin/lynx";
     DOTNET_ROOT = "${pkgs.dotnet-sdk}";
     DOTNET_CLI_TELEMETRY_OPTOUT = 1;
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE = 1;
