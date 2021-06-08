@@ -2,7 +2,8 @@
 let inherit (pkgs) stdenv;
 
 in rec {
-  imports = [ ./programs/config.nix ./services/config.nix ./xsession/config.nix ];
+  imports =
+    [ ./programs/config.nix ./services/config.nix ./xsession/config.nix ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 

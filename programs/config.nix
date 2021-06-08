@@ -10,7 +10,7 @@
   ];
   programs = {
     vscode = {
-    enable = config.xsession.enable;
+      enable = config.xsession.enable;
       package = pkgs.vscode;
     };
     gpg.enable = true;
