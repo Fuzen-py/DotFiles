@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   programs.chromium = {
-    enable = true;
+    enable = config.xsession.enable;
     extensions = [
 
       {

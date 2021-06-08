@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   programs.firefox = {
-    enable = true;
+    enable = config.xsession.enable;
     package = pkgs.firefox.override {
       cfg = {
         enableUgetIntegrator = true;
