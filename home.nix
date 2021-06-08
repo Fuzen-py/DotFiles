@@ -91,6 +91,8 @@ in rec {
       inherit pkgs;
       inherit lib;
     })
+    openssh
+    nodejs
   ];
 
   home.sessionVariables = {

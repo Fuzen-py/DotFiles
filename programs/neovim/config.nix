@@ -5,13 +5,13 @@
     vimAlias = true;
     vimdiffAlias = true;
     withNodeJs = true;
-    extraPackages = with pkgs; [ rustfmt clippy rustc cargo rust-analyzer gcc ];
+    extraPackages = with pkgs; [ rustfmt clippy rustc cargo rust-analyzer gcc nodejs ];
     plugins = with pkgs.vimPlugins; [
       coc-json
       coc-rust-analyzer
       {
         plugin = coc-nvim;
-        config = "\n";
+        config = "let g:coc_node_path=\"${pkgs.nodejs}/bin/node\"";
       }
       {
         plugin = vim-airline;
