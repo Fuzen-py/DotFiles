@@ -4,13 +4,15 @@
   l = "${pkgs.exa}/bin/exa";
   ls = "${pkgs.exa}/bin/exa";
   ll = "${pkgs.exa}/bin/exa -l";
-  g = "git";
+  g = "${pkgs.git}/bin/git";
   t = "tig status";
-  e = "nvim";
+  e = "$EDITOR";
   ee = "fzf --print0 | xargs -0 nvim";
   download = "${pkgs.aria}/bin/aria2c";
   ".." = "cd ..";
   "..." = "cd ../..";
   "...." = "cd ../../../";
   cat = "bat -p";
+  "nixfmt-all" =
+    ''find . -type f -name '*.nix' -exec ${pkgs.nixfmt}/bin/nixfmt "{}" \;'';
 }

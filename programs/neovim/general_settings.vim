@@ -21,6 +21,14 @@ set history=1000
 set list
 set smartcase
 set report =0
+
+" Some language servers has issues with backups
+setlocal nobackup
+setlocal nowritebackup
+
+" More space to display messages
+set cmdheight=4
+
 " execute 'set undodir='.expand(s:vim_path . '/undofiles')
 set undofile
 " execute 'set dir='.expand(s:vim_path . '/swapfiles//')
@@ -32,7 +40,12 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 " always show signcolumns
-set signcolumn=yes
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 autocmd filetype svn, *commit* setlocal spell " Spell checking
 " Set cursor shape {{{2
 if empty($TMUX)
