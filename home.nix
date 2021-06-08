@@ -114,7 +114,7 @@ in rec {
 
   home.sessionPath = [ "~/.local/bin" "${pkgs.dotnet-sdk}/bin" ];
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig.enable = lib.mkDefault true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
