@@ -1,4 +1,4 @@
-config.nix
+/config.nix
 .dotenv
 .direnv
 .DS_Store
