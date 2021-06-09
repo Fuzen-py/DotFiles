@@ -62,7 +62,19 @@ in rec {
 
   home.packages = with pkgs; [
     (import ./rename-padded-numbers.nix { inherit pkgs; })
-    nerdfonts
+    (nerdfonts.override {
+      fonts = [
+        "OpenDyslexic"
+        "Hack"
+        "FiraCode"
+        "FiraMono"
+        "CascadiaCode"
+        "Iosevka"
+        "Meslo"
+        "MPlus"
+        "SourceCodePro"
+      ];
+    })
     tokei
     nixfmt
     niv
