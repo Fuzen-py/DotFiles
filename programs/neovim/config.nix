@@ -81,7 +81,7 @@
     extraPython3Packages = (ps: with ps; [ pylint autopep8 pandas jedi ]);
     extraConfig = ''
       scriptencoding utf-8
-      colorscheme PaperColor
+      colorscheme gruvbox
       let $RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}"
 
     '' + (builtins.readFile ./general_settings.vim)
