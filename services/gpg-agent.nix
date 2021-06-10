@@ -54,11 +54,11 @@
       # Group recipient keys (preferred ID last)
       #group keygroup = 0xFF00000000000001 0xFF00000000000002 0xFF3E7D88647EBCDB
       # Keyserver URL
-      keyserver hkps://pgp.mit.edu
-      #keyserver hkps://keys.openpgp.org
-      #keyserver hkps://keyserver.ubuntu.com:443
-      #keyserver hkps://hkps.pool.sks-keyservers.net
-      #keyserver hkps://pgp.ocf.berkeley.edu
+      keyserver hkps://keys.openpgp.org
+      # keyserver hkps://keyserver.ubuntu.com:443
+      # keyserver hkps://pgp.mit.edu
+      # keyserver hkps://hkps.pool.sks-keyservers.net
+      # keyserver hkps://pgp.ocf.berkeley.edu
       # Proxy to use for keyservers
       #keyserver-options http-proxy=socks5-hostname://127.0.0.1:9050
       # Verbose output
