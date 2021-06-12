@@ -52,6 +52,17 @@ in rec {
     ".config/nvim/undofiles/.keep".text = "";
     ".config/nvim/Ultisnips/.keep".text = "";
 
+    ".local/bin/set-title" = {
+      text = ''
+        #!${pkgs.bash}/bin/bash
+        set-title() {
+          echo -ne "\033]0;$@\007"
+        }
+
+        set-title $@
+      '';
+      executable = true;
+    };
   };
 
   manual = {
@@ -126,6 +137,10 @@ in rec {
 
   home.sessionPath = [ "~/.local/bin" "${pkgs.dotnet-sdk}/bin" ];
 
+  home.keyboard = {
+    layout = true;
+
+  };
   fonts.fontconfig.enable = lib.mkDefault true;
 
   # This value determines the Home Manager release that your
