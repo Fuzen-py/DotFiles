@@ -52,6 +52,16 @@ in rec {
     ".config/nvim/undofiles/.keep".text = "";
     ".config/nvim/Ultisnips/.keep".text = "";
 
+    ".cargo/config".text = ''
+      [alias]
+      gen = "generate"
+
+      [cargo-new]
+      name = "${config.programs.git.userName}"
+      email = "${config.programs.git.userEmail}"
+      vcs = "git"
+     '';
+
     ".local/bin/set-title" = {
       text = ''
         #!${pkgs.bash}/bin/bash
