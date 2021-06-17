@@ -130,6 +130,7 @@ in rec {
     wrangler
     wasm-pack
     cargo-generate
+    coreutils-full
   ];
 
   home.sessionVariables = {
@@ -149,9 +150,10 @@ in rec {
 
   home.keyboard = {
     layout = true;
-
   };
+
   fonts.fontconfig.enable = lib.mkDefault true;
+
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

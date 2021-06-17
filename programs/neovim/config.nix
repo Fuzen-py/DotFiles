@@ -25,6 +25,9 @@ in {
       gcc
       nodejs
       dark-mode-vim
+      ripgrep
+      fzf
+      silver-searcher
     ];
     plugins = with pkgs.vimPlugins; [
       {
@@ -103,6 +106,7 @@ in {
           let g:gruvbox_underline=1
         '';
       }
+      fzf-vim
 
     ];
     extraPython3Packages = (ps: with ps; [ pylint autopep8 pandas jedi ]);
