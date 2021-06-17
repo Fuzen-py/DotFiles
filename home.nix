@@ -60,7 +60,7 @@ in rec {
       name = "${config.programs.git.userName}"
       email = "${config.programs.git.userEmail}"
       vcs = "git"
-     '';
+    '';
 
     ".local/bin/set-title" = {
       text = ''

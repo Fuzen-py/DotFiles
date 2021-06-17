@@ -1,4 +1,15 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }:
+let
+  dark-mode-vim = (import ./dark_mode.vim/dark_mode_vim.nix {
+    inherit pkgs;
+    inherit lib;
+  });
+  dark-mode-vim-package = pkgs.vimUtils.buildVimPlugin {
+    name = "dark-mode-vim";
+    src = ./dark_mode.vim;
+
+  };
+in {
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -13,8 +24,16 @@
       rust-analyzer
       gcc
       nodejs
+      dark-mode-vim
     ];
     plugins = with pkgs.vimPlugins; [
+      {
+        plugin = dark-mode-vim-package;
+        config = ''
+          let g:dark_smart_time_tlight = '08:15'
+          let g:dark_smart_time_tdark = '20:45'
+        '';
+      }
       coc-json
       coc-rust-analyzer
       {

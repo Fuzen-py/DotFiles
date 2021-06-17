@@ -37,7 +37,7 @@
     jq.enable = true;
     direnv = {
       enable = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv = { enable = true; };
     };
     starship = {
       enable = true;

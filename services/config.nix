@@ -5,7 +5,7 @@
     kbfs = { enable = true; };
     syncthing = {
       enable = true;
-      tray = { enable = true; };
+      # tray = { enable = true; };
     };
   };
 }

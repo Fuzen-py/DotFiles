@@ -1,0 +1,20 @@
+[package]
+name = "dark-mode-vim"
+version = "0.1.0"
+authors = ["Fuzen <me@fuzen.cafe>"]
+edition = "2018"
+
+# [[bin]]
+# name = "dark-mode-vim"
+# path = "sr/main.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+neovim-lib = "^0.6.1"
+chrono = "^0.4"
+
+[dependencies.is_dark]
+git = "https://github.com/Fuzen-py/is_dark"
+default-features = false
+rev = "85c961c368befe418e5004c751ac96b5f42e2fd6"
