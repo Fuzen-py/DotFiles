@@ -6,7 +6,7 @@ pkgs.rustPlatform.buildRustPackage rec {
 
   src = ./.;
 
-  cargoSha256 = "1wkzhgvdpvpc6yp5jisf7b874b19yyr4rp703a9dnmispakfyzyc";
+  cargoSha256 = "1vks2p7i9sx0vv7q51hsad0k4fg3nrzfq0zzqfr4qyipkgdpsi88";
 
   meta = with lib; {
     description = "System theme & time aware dark mode";
