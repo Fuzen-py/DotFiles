@@ -16,4 +16,5 @@
   "nixfmt-all" =
     ''find . -type f -name '*.nix' -exec ${pkgs.nixfmt}/bin/nixfmt "{}" \;'';
   cp = "${pkgs.coreutils-full}/bin/cp --reflink=auto";
+  find-font = "fc-list | fzf";
 }

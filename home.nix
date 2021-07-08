@@ -81,57 +81,63 @@ in rec {
     manpages.enable = true;
   };
 
-  home.packages = with pkgs; [
-    (import ./rename-padded-numbers.nix { inherit pkgs; })
-    (nerdfonts.override {
-      fonts = [
-        "OpenDyslexic"
-        "Hack"
-        "FiraCode"
-        "FiraMono"
-        "CascadiaCode"
-        "Iosevka"
-        "Meslo"
-        "MPlus"
-        "SourceCodePro"
-      ];
-    })
-    tokei
-    nixfmt
-    niv
-    tig
-    restic
-    zstd
-    mosh
-    rclone
-    carnix
-    man-pages
-    less
-    ffmpeg
-    youtube-dl
-    tealdeer
-    procs
-    #rustup
-    rustc
-    rust-analyzer
-    cargo
-    rustfmt
-    # rust
-    peco
-    kopia
-    clang
-    (import ./slower.nix {
-      inherit pkgs;
-      inherit lib;
-    })
-    openssh
-    nodejs
-    lynx
-    wrangler
-    wasm-pack
-    cargo-generate
-    coreutils-full
-  ];
+  home.packages = with pkgs;
+    [
+      (import ./rename-padded-numbers.nix { inherit pkgs; })
+      tokei
+      nixfmt
+      niv
+      tig
+      restic
+      zstd
+      mosh
+      rclone
+      carnix
+      man-pages
+      less
+      ffmpeg
+      youtube-dl
+      tealdeer
+      procs
+      # rustup
+      rustc
+      rust-analyzer
+      cargo
+      rustfmt
+      # rust
+      fontconfig
+      peco
+      kopia
+      clang
+      (import ./slower.nix {
+        inherit pkgs;
+        inherit lib;
+      })
+      openssh
+      nodejs
+      lynx
+      wrangler
+      wasm-pack
+      cargo-generate
+      coreutils-full
+    ] ++ (if config.xsession.enable then
+      ([
+        (nerdfonts.override {
+          fonts = [
+            "OpenDyslexic"
+            "Hack"
+            "FiraCode"
+            "FiraMono"
+            "CascadiaCode"
+            "Iosevka"
+            "Meslo"
+            "MPlus"
+            "SourceCodePro"
+          ];
+        })
+      ])
+    else
+      ([ ]));
 
   home.sessionVariables = {
     EDITOR = "${pkgs.neovim}/bin/nvim";
@@ -148,12 +154,9 @@ in rec {
 
   home.sessionPath = [ "~/.local/bin" "${pkgs.dotnet-sdk}/bin" ];
 
-  home.keyboard = {
-    layout = true;
-  };
+  home.keyboard = { layout = true; };
 
   fonts.fontconfig.enable = lib.mkDefault true;
-
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
