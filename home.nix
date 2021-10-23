@@ -12,7 +12,7 @@ in rec {
   home.username = "aizuzu";
   home.homeDirectory = "/home/aizuzu";
   # Unfree packages wanted
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
 
   home.file = {
     # Set unfree here too
