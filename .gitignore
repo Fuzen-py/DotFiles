@@ -2,3 +2,4 @@
 .dotenv
 .direnv
 .DS_Store
+.nvimlog

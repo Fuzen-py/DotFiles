@@ -105,6 +105,9 @@ in rec {
       cargo
       rustfmt
       # rust
+      llvmPackages.bintools-unwrapped
+      openssl
+      openssl.dev
       fontconfig
       peco
       kopia
@@ -120,6 +123,7 @@ in rec {
       wasm-pack
       cargo-generate
       coreutils-full
+      age
     ] ++ (if config.xsession.enable then
       ([
         (nerdfonts.override {
@@ -146,6 +150,7 @@ in rec {
     DOTNET_CLI_TELEMETRY_OPTOUT = 1;
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE = 1;
     RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+    PATH ="$HOME/.cargo/bin:$PATH";
   };
 
   home.sessionVariablesExtra = ''
