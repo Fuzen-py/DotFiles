@@ -1,10 +1,12 @@
 { lib, config, pkgs, ... }:
-let inherit (pkgs) stdenv;
+let
+  inherit (pkgs) stdenv;
   doom-emacs = pkgs.callPackage (builtins.fetchTarball {
-       url = https://github.com/nix-community/nix-doom-emacs/archive/master.tar.gz;
+    url =
+      "https://github.com/nix-community/nix-doom-emacs/archive/master.tar.gz";
   }) {
-    doomPrivateDir = ./doom.d;  # Directory containing your config.el init.el
-                                # and packages.el files
+    doomPrivateDir = ./doom.d; # Directory containing your config.el init.el
+    # and packages.el files
   };
 
 in rec {
@@ -90,65 +92,64 @@ in rec {
     manpages.enable = true;
   };
 
-  home.packages = with pkgs;
-    [
-      (import ./rename-padded-numbers.nix { inherit pkgs; })
-      tokei
-      nixfmt
-      niv
-      tig
-      restic
-      zstd
-      mosh
-      rclone
-      carnix
-      man-pages
-      less
-      ffmpeg
-      youtube-dl
-      tealdeer
-      procs
-      # rustup
-      rustc
-      rust-analyzer
-      cargo
-      rustfmt
-      # rust
-      llvmPackages.bintools-unwrapped
-      openssl
-      openssl.dev
-      fontconfig
-      peco
-      kopia
-      clang
-      (import ./slower.nix {
-        inherit pkgs;
-        inherit lib;
-      })
-      openssh
-      nodejs
-      lynx
-      wrangler
-      wasm-pack
-      cargo-generate
-      coreutils-full
-      ncurses6
-      doom-emacs
-      age
-      cascadia-code
-      (nerdfonts.override {
-          fonts = [
-            "OpenDyslexic"
-            "Hack"
-            "FiraCode"
-            "FiraMono"
-            "CascadiaCode"
-            "Iosevka"
-            "Meslo"
-            "MPlus"
-            "SourceCodePro"
-          ];
-        })
+  home.packages = with pkgs; [
+    (import ./rename-padded-numbers.nix { inherit pkgs; })
+    tokei
+    nixfmt
+    niv
+    tig
+    restic
+    zstd
+    mosh
+    rclone
+    carnix
+    man-pages
+    less
+    ffmpeg
+    youtube-dl
+    tealdeer
+    procs
+    # rustup
+    rustc
+    rust-analyzer
+    cargo
+    rustfmt
+    # rust
+    llvmPackages.bintools-unwrapped
+    openssl
+    openssl.dev
+    fontconfig
+    peco
+    kopia
+    clang
+    (import ./slower.nix {
+      inherit pkgs;
+      inherit lib;
+    })
+    openssh
+    nodejs
+    lynx
+    wrangler
+    wasm-pack
+    cargo-generate
+    coreutils-full
+    ncurses6
+    doom-emacs
+    age
+    cascadia-code
+    (nerdfonts.override {
+      fonts = [
+        "OpenDyslexic"
+        "Hack"
+        "FiraCode"
+        "FiraMono"
+        "CascadiaCode"
+        "Iosevka"
+        "Meslo"
+        "MPlus"
+        "SourceCodePro"
+      ];
+    })
   ];
   home.sessionVariables = {
     EDITOR = "${pkgs.neovim}/bin/nvim";
@@ -157,7 +158,7 @@ in rec {
     DOTNET_CLI_TELEMETRY_OPTOUT = 1;
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE = 1;
     RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
-    PATH ="$HOME/.cargo/bin:$PATH";
+    PATH = "$HOME/.cargo/bin:$PATH";
   };
 
   home.sessionVariablesExtra = ''
