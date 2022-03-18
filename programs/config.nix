@@ -110,21 +110,21 @@
       '';
       shellAliases = (import ./shellAliases.nix { inherit pkgs; }) // { };
     };
-    zsh = {
-      enable = true;
-      enableAutosuggestions = true;
-      enableVteIntegration = true;
-      autocd = true;
-      history = {
-        expireDuplicatesFirst = true;
-        extended = true;
-        ignoreSpace = true;
-        share = true;
-      };
-      shellAliases = (import ./shellAliases.nix { inherit pkgs; }) // {
+    #zsh = {
+    #  enable = true;
+    #  enableAutosuggestions = true;
+    #  enableVteIntegration = true;
+    #  autocd = true;
+    #  history = {
+    #    expireDuplicatesFirst = true;
+    #    extended = true;
+    #    ignoreSpace = true;
+    #    share = true;
+    #  };
+    #  shellAliases = (import ./shellAliases.nix { inherit pkgs; }) // {
 
-      };
-    };
+    #  };
+    #};
     fish = {
       enable = true;
       shellAliases = (import ./shellAliases.nix { inherit pkgs; }) // { };

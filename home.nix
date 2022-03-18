@@ -1,5 +1,11 @@
 { lib, config, pkgs, ... }:
 let inherit (pkgs) stdenv;
+  doom-emacs = pkgs.callPackage (builtins.fetchTarball {
+       url = https://github.com/nix-community/nix-doom-emacs/archive/master.tar.gz;
+  }) {
+    doomPrivateDir = ./doom.d;  # Directory containing your config.el init.el
+                                # and packages.el files
+  };
 
 in rec {
   imports =
@@ -73,6 +79,9 @@ in rec {
       '';
       executable = true;
     };
+    ".emacs.d/init.el".text = ''
+      (load "default.el")
+    '';
   };
 
   manual = {
@@ -123,10 +132,11 @@ in rec {
       wasm-pack
       cargo-generate
       coreutils-full
+      ncurses6
+      doom-emacs
       age
-    ] ++ (if config.xsession.enable then
-      ([
-        (nerdfonts.override {
+      cascadia-code
+      (nerdfonts.override {
           fonts = [
             "OpenDyslexic"
             "Hack"
@@ -139,10 +149,7 @@ in rec {
             "SourceCodePro"
           ];
         })
-      ])
-    else
-      ([ ]));
-
+  ];
   home.sessionVariables = {
     EDITOR = "${pkgs.neovim}/bin/nvim";
     BROWSER = "${pkgs.lynx}/bin/lynx";
